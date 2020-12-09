@@ -1,0 +1,5 @@
+{
+    "serviceArns": [
+        "arn:aws:ecs:ap-southeast-2:208344528594:service/SeafoodSafety-arkistocluster4404FD7B-OOS4mgOacNUz/SeafoodSafety-oniexpressfargateserviceService18DCAF69-oVtAkpX4W6gC"
+    ]
+}
