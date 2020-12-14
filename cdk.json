@@ -11,7 +11,6 @@
       "ocfl": "/Users/moises/seafood/oni-express/ocfl",
       "config": "/Users/moises/seafood/oni-express/config",
       "description": "SeafoodSafety ONI site",
-      "volume_name": "oni-express-volume",
       "oni_task": {
         "memory": 3072,
         "cpu": 512
