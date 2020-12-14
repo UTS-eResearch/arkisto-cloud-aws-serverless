@@ -54,3 +54,19 @@ Locations can be relative to this repository or absolute
 - Specify the location of express code: `context.base.express.location` and `context.base.indexer.location`
 - Specify the location of the ocfl repo: `context.base.ocfl`
 - Specify the location of the config: `context.base.config`
+
+#### Generate ssh key 
+
+```shell script
+mkdir -p key
+ssh-keygen -f key/id.rsa -t rsa -C "arkisto" -q -N ""
+```
+
+#### Run
+
+Once ready run:
+
+```shell script
+npm run cdk:deploy
+```
+
