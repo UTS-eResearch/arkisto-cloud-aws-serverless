@@ -1,4 +1,6 @@
-# Arkisto to Cloud
+# Arkisto to Cloud Serverless
+
+This repository will help you deploy an arkisto site using AWS Elastic Container Service using Fargate Containers with cloudformation
 
 ## To get started
 
