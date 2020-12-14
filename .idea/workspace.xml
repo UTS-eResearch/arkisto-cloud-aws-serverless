@@ -33,26 +33,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa5d3513-e935-4237-b801-e41cb123c104" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cdk_restart_service.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cdk_ssh.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/base.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cdk.json" beforeDir="false" afterPath="$PROJECT_DIR$/cdk.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cdk_get_asg_dns.sh" beforeDir="false" afterPath="$PROJECT_DIR$/cdk_get_output.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cdk_service.sh" beforeDir="false" afterPath="$PROJECT_DIR$/cdk_service.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cdk_sync_config.sh" beforeDir="false" afterPath="$PROJECT_DIR$/cdk_sync_config.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cdk_sync_ocfl.sh" beforeDir="false" afterPath="$PROJECT_DIR$/cdk_sync_ocfl.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/solr/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/solr/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/solr/docker-entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker/solr/docker-entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/clusters.json" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/clusters.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/services.json" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/services.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/arkisto-cloud-aws-stack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/arkisto-cloud-aws-stack.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dataingest.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dataingest.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/express.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/oni.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/indexer.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +140,7 @@
       <updated>1606955190076</updated>
       <workItem from="1606955191309" duration="21527000" />
       <workItem from="1607292940268" duration="45658000" />
-      <workItem from="1607896827300" duration="46479000" />
+      <workItem from="1607896827300" duration="46776000" />
     </task>
     <servers />
   </component>
@@ -212,28 +194,28 @@
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="1145" height="466" key="DebuggerActiveHint/-1792.-17.1792.1097/0.23.1920.1057@0.23.1920.1057" timestamp="1607985630235" />
-    <state width="1899" height="314" key="GridCell.Tab.0.bottom" timestamp="1607987782785">
+    <state width="1899" height="314" key="GridCell.Tab.0.bottom" timestamp="1607987924571">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1899" height="314" key="GridCell.Tab.0.bottom/-1792.-17.1792.1097/0.23.1920.1057@0.23.1920.1057" timestamp="1607987782785" />
+    <state width="1899" height="314" key="GridCell.Tab.0.bottom/-1792.-17.1792.1097/0.23.1920.1057@0.23.1920.1057" timestamp="1607987924571" />
     <state width="1878" height="358" key="GridCell.Tab.0.bottom/0.23.1792.1097@0.23.1792.1097" timestamp="1607844875376" />
     <state width="1878" height="358" key="GridCell.Tab.0.bottom/0.23.1920.1057/1920.23.1920.1057/-1792.23.1792.1097@0.23.1920.1057" timestamp="1607400686301" />
-    <state width="1899" height="314" key="GridCell.Tab.0.center" timestamp="1607987782784">
+    <state width="1899" height="314" key="GridCell.Tab.0.center" timestamp="1607987924570">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1899" height="314" key="GridCell.Tab.0.center/-1792.-17.1792.1097/0.23.1920.1057@0.23.1920.1057" timestamp="1607987782784" />
+    <state width="1899" height="314" key="GridCell.Tab.0.center/-1792.-17.1792.1097/0.23.1920.1057@0.23.1920.1057" timestamp="1607987924570" />
     <state width="1878" height="358" key="GridCell.Tab.0.center/0.23.1792.1097@0.23.1792.1097" timestamp="1607844875376" />
     <state width="1878" height="358" key="GridCell.Tab.0.center/0.23.1920.1057/1920.23.1920.1057/-1792.23.1792.1097@0.23.1920.1057" timestamp="1607400686300" />
-    <state width="1899" height="314" key="GridCell.Tab.0.left" timestamp="1607987782783">
+    <state width="1899" height="314" key="GridCell.Tab.0.left" timestamp="1607987924570">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1899" height="314" key="GridCell.Tab.0.left/-1792.-17.1792.1097/0.23.1920.1057@0.23.1920.1057" timestamp="1607987782783" />
+    <state width="1899" height="314" key="GridCell.Tab.0.left/-1792.-17.1792.1097/0.23.1920.1057@0.23.1920.1057" timestamp="1607987924570" />
     <state width="1878" height="358" key="GridCell.Tab.0.left/0.23.1792.1097@0.23.1792.1097" timestamp="1607844875376" />
     <state width="1878" height="358" key="GridCell.Tab.0.left/0.23.1920.1057/1920.23.1920.1057/-1792.23.1792.1097@0.23.1920.1057" timestamp="1607400686299" />
-    <state width="1899" height="314" key="GridCell.Tab.0.right" timestamp="1607987782784">
+    <state width="1899" height="314" key="GridCell.Tab.0.right" timestamp="1607987924571">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1899" height="314" key="GridCell.Tab.0.right/-1792.-17.1792.1097/0.23.1920.1057@0.23.1920.1057" timestamp="1607987782784" />
+    <state width="1899" height="314" key="GridCell.Tab.0.right/-1792.-17.1792.1097/0.23.1920.1057@0.23.1920.1057" timestamp="1607987924571" />
     <state width="1878" height="358" key="GridCell.Tab.0.right/0.23.1792.1097@0.23.1792.1097" timestamp="1607844875376" />
     <state width="1878" height="358" key="GridCell.Tab.0.right/0.23.1920.1057/1920.23.1920.1057/-1792.23.1792.1097@0.23.1920.1057" timestamp="1607400686300" />
     <state width="1899" height="358" key="GridCell.Tab.1.bottom" timestamp="1607986763981">

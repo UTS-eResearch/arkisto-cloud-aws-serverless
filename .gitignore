@@ -1,5 +1,6 @@
-!bin/getResourceId.js
 *.js
+!bin/getResourceId.js
+
 !jest.config.js
 *.d.ts
 node_modules
