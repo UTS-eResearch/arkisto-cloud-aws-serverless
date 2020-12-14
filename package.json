@@ -12,8 +12,10 @@
     "cdk:deploy": "node_modules/.bin/cdk deploy --require-approval any-change",
     "cdk:destroy": "node_modules/.bin/cdk destroy --require-approval any-change",
     "cdk:diff": "./node_modules/.bin/cdk diff",
-    "start:service": "source cdk_service.sh start",
-    "stop:service": "source cdk_service.sh stop"
+    "start:service": "echo | source cdk_service.sh start",
+    "stop:service": "echo | source cdk_service.sh stop",
+    "sync:config": "source cdk_sync_config.sh",
+    "sync:ocfl": "source cdk_sync_ocfl.sh.sh"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.62.0",

@@ -7,6 +7,7 @@ import * as ecs_patterns from "@aws-cdk/aws-ecs-patterns";
 import * as elb2 from "@aws-cdk/aws-elasticloadbalancingv2";
 
 import Express from "./express";
+import DataIngest from "./dataingest";
 
 export class ArkistoCloudAwsStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -55,7 +56,6 @@ export class ArkistoCloudAwsStack extends cdk.Stack {
     });
     new cdk.CfnOutput(this, 'configFileSystemId', {value: configFileSystem.fileSystemId});
 
-
     const configVolumeConfig = {
       name: "config-vol",
       efsVolumeConfiguration: {
@@ -67,10 +67,44 @@ export class ArkistoCloudAwsStack extends cdk.Stack {
       vpc: vpc
     });
 
-    // const indexerTaskDefinition = new ecs.FargateTaskDefinition(this, "indexer-task-definition", {
+    const logging = new ecs.AwsLogDriver({streamPrefix: "oni", logRetention: logs.RetentionDays.ONE_MONTH})
+
+    const dataIngest = new DataIngest(this, "data-ingest-task-definition", {
+      volumes: [ocflVolumeConfig, configVolumeConfig],
+      memoryLimitMiB: base["data_service"]["memory"],
+      cpu: base["data_service"]["cpu"]
+    }, {
+      logging,
+      base,
+      ocflVolumeConfig,
+      configVolumeConfig
+    });
+
+    const availabilityZones = this.node.tryGetContext('availability_zones');
+    const dataApp = new ecs_patterns.ApplicationLoadBalancedFargateService(this, 'data-service', {
+      cluster: cluster, // Required
+      cpu: base["load_balancer"]["cpu"], // Default is 256
+      desiredCount: 1, // Default is 1
+      memoryLimitMiB: base["load_balancer"]["memory"], // Default is 512
+      publicLoadBalancer: true, // Default is false
+      taskDefinition: dataIngest,
+      platformVersion: ecs.FargatePlatformVersion.VERSION1_4,
+      listenerPort: 22
+    });
+    dataApp.service.connections.allowFrom(ocflFileSystem, ec2.Port.tcp(2049));
+    dataApp.service.connections.allowTo(ocflFileSystem, ec2.Port.tcp(2049));
+    dataApp.service.connections.allowFrom(configFileSystem, ec2.Port.tcp(2049));
+    dataApp.service.connections.allowTo(configFileSystem, ec2.Port.tcp(2049));
+
+    // const indexer = new Indexer(this, 'indexer', {
     //   volumes: [ocflVolumeConfig, configVolumeConfig],
     //   memoryLimitMiB: base["indexer"]["memory"],
     //   cpu: base["indexer"]["cpu"],
+    // }, {
+    //   logging,
+    //   base,
+    //   ocflVolumeConfig,
+    //   configVolumeConfig
     // });
 
     const express = new Express(this, 'oni', {
@@ -78,6 +112,7 @@ export class ArkistoCloudAwsStack extends cdk.Stack {
       memoryLimitMiB: base["service"]["memory"],
       cpu: base["service"]["cpu"]
     }, {
+      logging,
       base,
       solrVolumeConfig,
       ocflVolumeConfig,
@@ -94,6 +129,7 @@ export class ArkistoCloudAwsStack extends cdk.Stack {
       taskDefinition: express,
       platformVersion: ecs.FargatePlatformVersion.VERSION1_4
     });
+
     app.targetGroup.configureHealthCheck({
       path: "/",
       healthyHttpCodes: "200-399",
@@ -102,16 +138,12 @@ export class ArkistoCloudAwsStack extends cdk.Stack {
       unhealthyThresholdCount: 5
     });
 
-    app.service.loadBalancerTarget({
-      containerName: 'ssh',
-      containerPort: 2222
-    });
-
     app.service.connections.allowFrom(ocflFileSystem, ec2.Port.tcp(2049));
     app.service.connections.allowTo(ocflFileSystem, ec2.Port.tcp(2049));
     app.service.connections.allowFrom(solrFileSystem, ec2.Port.tcp(2049));
     app.service.connections.allowTo(solrFileSystem, ec2.Port.tcp(2049));
     app.service.connections.allowFrom(configFileSystem, ec2.Port.tcp(2049));
     app.service.connections.allowTo(configFileSystem, ec2.Port.tcp(2049));
+
   }
 }

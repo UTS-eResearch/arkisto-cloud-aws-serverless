@@ -2,6 +2,11 @@
   "app": "npx ts-node bin/arkisto-cloud-aws.ts",
   "context": {
     "cloud_stack_id": "SeafoodSafety",
+    "availability_zones": [
+      "ap-southeast-2a",
+      "ap-southeast-2b",
+      "ap-southeast-2c"
+    ],
     "base": {
       "ocfl": "/Users/moises/seafood/oni-express/ocfl",
       "config": "/Users/moises/seafood/oni-express/config",
@@ -33,6 +38,10 @@
       "memcached": {
         "memory": 512,
         "cpu": 1
+      },
+      "data_service": {
+        "memory": 1024,
+        "cpu": 256
       },
       "ssh": {
         "location": "docker/ssh",
