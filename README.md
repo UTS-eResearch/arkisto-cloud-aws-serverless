@@ -40,13 +40,15 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 ## Configuration
 
-Name your ckd stack in `cdk.json` : `context.cloud_stack_id`
+#### Base Configuration
 
-Describe your ckd stack in `cdk.json` : `context.base.description`
+- Name your ckd stack in `cdk.json` : `context.cloud_stack_id`
+- Describe your ckd stack in `cdk.json` : `context.base.description`
 
-Specify the location of express code: `context.base.express.location` and `context.base.indexer.location`
-it can be relative to this repository or absolute
+#### Locations
 
-Specify the location of the ocfl repo: `context.base.ocfl`
+Locations can be relative to this repository or absolute
 
-Specify the location of the config: `context.base.config`
+- Specify the location of express code: `context.base.express.location` and `context.base.indexer.location`
+- Specify the location of the ocfl repo: `context.base.ocfl`
+- Specify the location of the config: `context.base.config`
