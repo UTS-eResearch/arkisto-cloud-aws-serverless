@@ -37,7 +37,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
  * `npm run start:oni`           start oni service
  * `npm run stop:oni`            stop oni service
  * `npm run sync:config`         sync contents of config to site
- * `npm run sync:config`         sync ocfl repository to site
+ * `npm run sync:ocfl`           sync ocfl repository to site
  * `npm run ssh`                 connects via ssh
 
 ## Configuration
@@ -70,3 +70,41 @@ Once ready run:
 npm run cdk:deploy
 ```
 
+### Upload Config and Data
+
+If this is the first time running the deployment
+
+Sync Configuration
+
+```shell script
+npm run sync:config
+```
+
+Sync OCFL
+
+```shell script
+npm run sync:ocfl
+```
+
+#### Verify or See files
+
+Connect SSH
+
+```shell script
+npm run ssh
+```
+
+Folders will be stored in
+
+Solr
+```shell script
+/var/solr/data
+```
+Config
+```shell script
+/etc/shared/config
+```
+OCFL
+```shell script
+/etc/shared/ocfl
+```
