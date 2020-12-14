@@ -6,8 +6,9 @@ import * as logs from "@aws-cdk/aws-logs";
 import * as ecs_patterns from "@aws-cdk/aws-ecs-patterns";
 import * as elb2 from "@aws-cdk/aws-elasticloadbalancingv2";
 
-import Express from "./express";
+import Base from "./base";
 import DataIngest from "./dataingest";
+import Oni from "./oni";
 
 export class ArkistoCloudAwsStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -70,80 +71,102 @@ export class ArkistoCloudAwsStack extends cdk.Stack {
     const logging = new ecs.AwsLogDriver({streamPrefix: "oni", logRetention: logs.RetentionDays.ONE_MONTH})
 
     const dataIngest = new DataIngest(this, "data-ingest-task-definition", {
-      volumes: [ocflVolumeConfig, configVolumeConfig],
+      volumes: [ocflVolumeConfig, configVolumeConfig, solrVolumeConfig],
       memoryLimitMiB: base["data_service"]["memory"],
       cpu: base["data_service"]["cpu"]
     }, {
       logging,
       base,
       ocflVolumeConfig,
-      configVolumeConfig
+      configVolumeConfig,
+      solrVolumeConfig
     });
 
-    const availabilityZones = this.node.tryGetContext('availability_zones');
-    const dataApp = new ecs_patterns.ApplicationLoadBalancedFargateService(this, 'data-service', {
+    const sshSecurityGroup = new ec2.SecurityGroup(this, 'ssh-security-group', {
+      vpc: vpc,
+      description: 'allow ssh access to ecs',
+      allowAllOutbound: true
+    });
+    sshSecurityGroup.addIngressRule(
+      ec2.Peer.anyIpv4(),
+      ec2.Port.tcp(22),
+      'allow ingress ssh traffic'
+    );
+    const sshApp = new ecs.FargateService(this, 'ssh-service', {
       cluster: cluster, // Required
-      cpu: base["load_balancer"]["cpu"], // Default is 256
       desiredCount: 1, // Default is 1
-      memoryLimitMiB: base["load_balancer"]["memory"], // Default is 512
-      publicLoadBalancer: true, // Default is false
       taskDefinition: dataIngest,
       platformVersion: ecs.FargatePlatformVersion.VERSION1_4,
-      listenerPort: 22
+      assignPublicIp: true,
+      securityGroups: [sshSecurityGroup]
     });
-    dataApp.service.connections.allowFrom(ocflFileSystem, ec2.Port.tcp(2049));
-    dataApp.service.connections.allowTo(ocflFileSystem, ec2.Port.tcp(2049));
-    dataApp.service.connections.allowFrom(configFileSystem, ec2.Port.tcp(2049));
-    dataApp.service.connections.allowTo(configFileSystem, ec2.Port.tcp(2049));
+    const sshLb = new elb2.NetworkLoadBalancer(this, 'ssh-lb', {
+      vpc: vpc,
+      internetFacing: true
+    });
+    const listener = sshLb.addListener('ssh-listener', {
+      port: 22,
+      protocol: elb2.Protocol.TCP,
+    });
 
-    // const indexer = new Indexer(this, 'indexer', {
-    //   volumes: [ocflVolumeConfig, configVolumeConfig],
-    //   memoryLimitMiB: base["indexer"]["memory"],
-    //   cpu: base["indexer"]["cpu"],
-    // }, {
-    //   logging,
-    //   base,
-    //   ocflVolumeConfig,
-    //   configVolumeConfig
-    // });
+    sshApp.registerLoadBalancerTargets({
+      containerName: 'ssh',
+      containerPort: 2222,
+      newTargetGroupId: 'ecs',
+      listener: ecs.ListenerConfig.networkListener(listener, {
+        port: 22,
+        protocol: elb2.Protocol.TCP
+      }),
+      protocol: ecs.Protocol.TCP
+    });
+    new cdk.CfnOutput(this, 'sshLoadBalancer', {value: sshLb.loadBalancerDnsName});
 
-    const express = new Express(this, 'oni', {
-      volumes: [ocflVolumeConfig, solrVolumeConfig, configVolumeConfig],
-      memoryLimitMiB: base["service"]["memory"],
-      cpu: base["service"]["cpu"]
+    sshApp.connections.allowFromAnyIpv4(ec2.Port.tcp(22), 'ssh-allow');
+    sshApp.connections.allowFromAnyIpv4(ec2.Port.tcp(2222), 'ssh-docker-allow');
+    sshApp.connections.allowFrom(sshSecurityGroup, ec2.Port.tcp(22));
+    sshApp.connections.allowTo(sshSecurityGroup, ec2.Port.tcp(2222));
+    sshApp.connections.allowFrom(ocflFileSystem, ec2.Port.tcp(2049));
+    sshApp.connections.allowTo(ocflFileSystem, ec2.Port.tcp(2049));
+    sshApp.connections.allowFrom(configFileSystem, ec2.Port.tcp(2049));
+    sshApp.connections.allowTo(configFileSystem, ec2.Port.tcp(2049));
+    sshApp.connections.allowFrom(solrFileSystem, ec2.Port.tcp(2049));
+    sshApp.connections.allowTo(solrFileSystem, ec2.Port.tcp(2049));
+
+    const oniTask = new Oni(this, 'oniTask', {
+      volumes: [ocflVolumeConfig, configVolumeConfig, solrVolumeConfig],
+      memoryLimitMiB: base["oni_task"]["memory"],
+      cpu: base["oni_task"]["cpu"]
     }, {
       logging,
       base,
-      solrVolumeConfig,
       ocflVolumeConfig,
-      configVolumeConfig
+      configVolumeConfig,
+      solrVolumeConfig
     });
-
-    // Create a load-balanced Fargate service and make it public
-    const app = new ecs_patterns.ApplicationLoadBalancedFargateService(this, "oni-express-fargate-service", {
+    const oniApp = new ecs_patterns.ApplicationLoadBalancedFargateService(this, "oni-service", {
       cluster: cluster, // Required
-      cpu: base["load_balancer"]["cpu"], // Default is 256
+      cpu: base["oni_service"]["cpu"], // Default is 256
       desiredCount: 1, // Default is 1
-      memoryLimitMiB: base["load_balancer"]["memory"], // Default is 512
+      memoryLimitMiB: base["oni_service"]["memory"], // Default is 512
       publicLoadBalancer: true, // Default is false
-      taskDefinition: express,
+      taskDefinition: oniTask,
       platformVersion: ecs.FargatePlatformVersion.VERSION1_4
     });
 
-    app.targetGroup.configureHealthCheck({
+    oniApp.targetGroup.configureHealthCheck({
       path: "/",
       healthyHttpCodes: "200-399",
       interval: cdk.Duration.seconds(60),
       timeout: cdk.Duration.seconds(30),
-      unhealthyThresholdCount: 5
+      unhealthyThresholdCount: 5,
     });
 
-    app.service.connections.allowFrom(ocflFileSystem, ec2.Port.tcp(2049));
-    app.service.connections.allowTo(ocflFileSystem, ec2.Port.tcp(2049));
-    app.service.connections.allowFrom(solrFileSystem, ec2.Port.tcp(2049));
-    app.service.connections.allowTo(solrFileSystem, ec2.Port.tcp(2049));
-    app.service.connections.allowFrom(configFileSystem, ec2.Port.tcp(2049));
-    app.service.connections.allowTo(configFileSystem, ec2.Port.tcp(2049));
+    oniApp.service.connections.allowFrom(ocflFileSystem, ec2.Port.tcp(2049));
+    oniApp.service.connections.allowTo(ocflFileSystem, ec2.Port.tcp(2049));
+    oniApp.service.connections.allowFrom(configFileSystem, ec2.Port.tcp(2049));
+    oniApp.service.connections.allowTo(configFileSystem, ec2.Port.tcp(2049));
+    oniApp.service.connections.allowFrom(solrFileSystem, ec2.Port.tcp(2049));
+    oniApp.service.connections.allowTo(solrFileSystem, ec2.Port.tcp(2049));
 
   }
 }

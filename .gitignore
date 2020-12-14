@@ -1,3 +1,4 @@
+!bin/getResourceId.js
 *.js
 !jest.config.js
 *.d.ts
@@ -12,3 +13,6 @@ cdk.out
 .idea
 !key/.gitkeep
 key/*
+
+!helpers/.gitkeep
+helpers/*

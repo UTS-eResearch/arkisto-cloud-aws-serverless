@@ -1,6 +1,6 @@
 {
     "serviceArns": [
-        "arn:aws:ecs:ap-southeast-2:208344528594:service/SeafoodSafety-arkistocluster4404FD7B-fTyIYQ0oMpuV/SeafoodSafety-dataserviceService452355D3-YzqWyxeO8Int",
-        "arn:aws:ecs:ap-southeast-2:208344528594:service/SeafoodSafety-arkistocluster4404FD7B-fTyIYQ0oMpuV/SeafoodSafety-oniexpressfargateserviceService18DCAF69-5eoNRHvJ43jC"
+        "arn:aws:ecs:ap-southeast-2:208344528594:service/SeafoodSafety-arkistocluster4404FD7B-6hfI0bebqopR/SeafoodSafety-sshserviceService90796DAD-OWjXvMyV0pFQ",
+        "arn:aws:ecs:ap-southeast-2:208344528594:service/SeafoodSafety-arkistocluster4404FD7B-6hfI0bebqopR/SeafoodSafety-oniserviceService4ACCF1FB-P61vEjZnH0TA"
     ]
 }

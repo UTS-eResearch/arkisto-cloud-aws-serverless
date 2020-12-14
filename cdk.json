@@ -12,11 +12,11 @@
       "config": "/Users/moises/seafood/oni-express/config",
       "description": "SeafoodSafety ONI site",
       "volume_name": "oni-express-volume",
-      "service": {
+      "oni_task": {
         "memory": 3072,
         "cpu": 512
       },
-      "load_balancer": {
+      "oni_service": {
         "cpu": 512,
         "memory": 512
       },

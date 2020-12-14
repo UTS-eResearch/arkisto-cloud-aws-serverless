@@ -51,5 +51,11 @@ export default class DataIngest extends ecs.FargateTaskDefinition {
       containerPath: '/etc/share/config',
       readOnly: false
     });
+
+    this.ssh.addMountPoints({
+      sourceVolume: config.solrVolumeConfig.name,
+      containerPath: '/var/solr/data',
+      readOnly: false
+    });
   }
 }

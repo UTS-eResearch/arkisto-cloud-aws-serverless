@@ -2,8 +2,10 @@
 #
 # docker-entrypoint for docker-solr
 
-# TODO: check if /var/solr/data exists
-chown -R 8983:8983 /var/solr/data
+if [ ! -d "/var/solr/data" ]; then
+  mkdir /var/solr/data
+fi
+
 
 set -e
 

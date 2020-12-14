@@ -12,10 +12,15 @@
     "cdk:deploy": "node_modules/.bin/cdk deploy --require-approval any-change",
     "cdk:destroy": "node_modules/.bin/cdk destroy --require-approval any-change",
     "cdk:diff": "./node_modules/.bin/cdk diff",
-    "start:service": "echo | source cdk_service.sh start",
-    "stop:service": "echo | source cdk_service.sh stop",
+    "start:ssh:service": "echo | source cdk_service.sh start service sshservice",
+    "stop:ssh:service": "echo | source cdk_service.sh stop service sshservice",
+    "start:ssh:oni": "echo | source cdk_service.sh start service oniservice",
+    "stop:ssh:oni": "echo | source cdk_service.sh stop service oniservice",
+    "restart:service": "echo | source cdk_restart_service.sh",
     "sync:config": "source cdk_sync_config.sh",
-    "sync:ocfl": "source cdk_sync_ocfl.sh.sh"
+    "sync:ocfl": "source cdk_sync_ocfl.sh.sh",
+    "ssh": "source cdk_ssh.sh",
+    "get:sshdns": "source cdk_get_output.sh sshLoadBalancer"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.62.0",
@@ -28,11 +33,11 @@
     "typescript": "~3.9.7"
   },
   "dependencies": {
-    "@aws-cdk/aws-ec2": "^1.76.0",
-    "@aws-cdk/aws-ecs": "^1.76.0",
-    "@aws-cdk/aws-ecs-patterns": "^1.76.0",
-    "@aws-cdk/aws-efs": "^1.76.0",
-    "@aws-cdk/core": "1.76.0",
+    "@aws-cdk/aws-ec2": "^1.78.0",
+    "@aws-cdk/aws-ecs": "^1.78.0",
+    "@aws-cdk/aws-ecs-patterns": "^1.78.0",
+    "@aws-cdk/aws-efs": "^1.78.0",
+    "@aws-cdk/core": "1.78.0",
     "source-map-support": "^0.5.16"
   }
 }
