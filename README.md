@@ -65,7 +65,11 @@ ssh-keygen -f key/id.rsa -t rsa -C "arkisto" -q -N ""
 #### Run
 
 Once ready run:
-
+Compile typescript in watch mode
+```shell script
+npm run watch
+```
+then deploy
 ```shell script
 npm run cdk:deploy
 ```
