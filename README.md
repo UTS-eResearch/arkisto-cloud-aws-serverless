@@ -64,25 +64,44 @@ ssh-keygen -f key/id.rsa -t rsa -C "arkisto" -q -N ""
 
 #### Run
 
-Once ready run:
+Install:
+```shell script
+npm install
+```
+
 Compile typescript in watch mode
 ```shell script
 npm run watch
 ```
-then deploy
+
+Then deploy
 ```shell script
 npm run cdk:deploy
 ```
 
 ### Upload Config and Data
 
-If this is the first time running the deployment
+**Docker**
 
-Sync Configuration
+Verify that your docker container config are pointing to localhost. 
+This way all the docker containers can talk to each other.
+
+Example: 
+- In express.json 
+    - `http://solr:8983` use `http://localhost:8983`
+    - `memcached:11211` use `localhost:11211`
+- In indexer.json
+    - `"solrBase": "http://solr:8983/solr/ocfl",` use `"solrBase": "http://localhost:8983/solr/ocfl",`
+
+This is because if you used docker-compose for Mac. Mac OS cannot use localhost it uses the docker name.
+You could also see `host.docker.internal` instead of `localhost`
+
+**Sync Configuration**
 
 ```shell script
 npm run sync:config
 ```
+**OCFL**
 
 Sync OCFL
 
@@ -92,7 +111,7 @@ npm run sync:ocfl
 
 #### Verify or See files
 
-Connect SSH
+**Connect SSH**
 
 ```shell script
 npm run ssh
@@ -100,15 +119,15 @@ npm run ssh
 
 Folders will be stored in
 
-Solr
+**Solr**
 ```shell script
 /var/solr/data
 ```
-Config
+**Config**
 ```shell script
 /etc/shared/config
 ```
-OCFL
+**OCFL**
 ```shell script
 /etc/shared/ocfl
 ```

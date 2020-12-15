@@ -42,7 +42,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../arkisto-cloud-aws-serverless" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1l7jnR2bomCxS34gLRU2C2UlS8Z" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -141,6 +141,7 @@
       <workItem from="1606955191309" duration="21527000" />
       <workItem from="1607292940268" duration="45658000" />
       <workItem from="1607896827300" duration="47995000" />
+      <workItem from="1608073694917" duration="686000" />
     </task>
     <servers />
   </component>
