@@ -126,9 +126,42 @@ Folders will be stored in
 ```
 **Config**
 ```shell script
-/etc/shared/config
+/etc/share/config
 ```
 **OCFL**
 ```shell script
-/etc/shared/ocfl
+/etc/share/ocfl
+```
+
+## Troubleshooting
+
+**Delete Solr data dir**
+
+Connect to the ssh service
+
+```shell script
+npm run ssh
+```
+
+```shell script
+cd /var/solr/data
+```
+
+and remove ocfl
+```shell script
+rm -rf ocfl
+```
+
+** Restart Stop ONI**
+
+```shell script
+npm run stop:oni
+```
+
+It should give a desired task of 0 then AWS will take care of the rest
+
+then start oni again
+
+```shell script
+npm run start:oni
 ```

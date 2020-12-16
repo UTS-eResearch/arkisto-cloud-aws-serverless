@@ -1,6 +1,6 @@
 {
   "name": "arkisto-cloud-aws",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "bin": {
     "arkisto-cloud-aws": "bin/arkisto-cloud-aws.js"
   },
