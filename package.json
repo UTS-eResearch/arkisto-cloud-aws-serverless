@@ -12,14 +12,14 @@
     "cdk:deploy": "node_modules/.bin/cdk deploy --require-approval any-change",
     "cdk:destroy": "node_modules/.bin/cdk destroy --require-approval any-change",
     "cdk:diff": "./node_modules/.bin/cdk diff",
-    "start:ssh": "echo | source cdk_service.sh start service sshservice",
-    "stop:ssh": "echo | source cdk_service.sh stop service sshservice",
-    "start:oni": "echo | source cdk_service.sh start service oniservice",
-    "stop:oni": "echo | source cdk_service.sh stop service oniservice",
-    "sync:config": "source cdk_sync_config.sh",
-    "sync:ocfl": "source cdk_sync_ocfl.sh.sh",
-    "ssh": "source cdk_ssh.sh",
-    "get:sshdns": "source cdk_get_output.sh sshLoadBalancer"
+    "start:ssh": "./cdk_service.sh start service sshservice",
+    "stop:ssh": "./cdk_service.sh stop service sshservice",
+    "start:oni": "./cdk_service.sh start service oniservice",
+    "stop:oni": "./cdk_service.sh stop service oniservice",
+    "sync:config": "./cdk_sync_config.sh",
+    "sync:ocfl": "./cdk_sync_ocfl.sh.sh",
+    "ssh": "./cdk_ssh.sh",
+    "get:sshdns": "./cdk_get_output.sh sshLoadBalancer"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.78.0",
