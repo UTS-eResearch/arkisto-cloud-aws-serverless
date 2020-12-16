@@ -34,7 +34,7 @@
   <component name="ChangeListManager">
     <list default="true" id="aa5d3513-e935-4237-b801-e41cb123c104" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +43,15 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/Arkisto-Platform/arkisto-cloud-aws-serverless" />
+        <option value="https://github.com/UTS-eResearch/oni-express" />
+        <option value="https://github.com/UTS-eResearch/oni-portal" />
+      </set>
+    </option>
   </component>
   <component name="ProjectId" id="1l7jnR2bomCxS34gLRU2C2UlS8Z" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -141,7 +150,8 @@
       <workItem from="1606955191309" duration="21527000" />
       <workItem from="1607292940268" duration="45658000" />
       <workItem from="1607896827300" duration="47995000" />
-      <workItem from="1608073694917" duration="686000" />
+      <workItem from="1608073694917" duration="884000" />
+      <workItem from="1608079907430" duration="88000" />
     </task>
     <servers />
   </component>
