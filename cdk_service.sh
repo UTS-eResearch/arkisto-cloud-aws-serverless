@@ -22,8 +22,8 @@ SERVICE_NAME=$3
 
 aws ecs list-clusters > helpers/clusters.json
 
-app=$(./node_modules/.bin/cdk list)
-echo "BaseResources ID: ${app}"
+app=$(node -pe 'JSON.parse(process.argv[1]).context.cloud_stack_id' "$(cat cdk.json)")
+echo "App ID: ${app}"
 
 clusterId=$(node bin/getResourceId.js ${app} cluster)
 echo "Cluster ID: ${clusterId}"
