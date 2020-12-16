@@ -60,6 +60,7 @@ Locations can be relative to this repository or absolute
 ```shell script
 mkdir -p key
 ssh-keygen -f key/id.rsa -t rsa -C "arkisto" -q -N ""
+chmod 644 key/id.rsa
 ```
 
 #### Run

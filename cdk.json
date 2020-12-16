@@ -1,7 +1,7 @@
 {
   "app": "npx ts-node bin/arkisto-cloud-aws.ts",
   "context": {
-    "cloud_stack_id": "SeafoodSafety",
+    "cloud_stack_id": "<<YOUR_STACK_ID_HERE>>",
     "availability_zones": [
       "ap-southeast-2a",
       "ap-southeast-2b",
@@ -10,7 +10,7 @@
     "base": {
       "ocfl": "/Users/moises/seafood/oni-express/ocfl",
       "config": "/Users/moises/seafood/oni-express/config",
-      "description": "SeafoodSafety ONI site",
+      "description": "<<YOUR_STACK_ID_HERE>> ONI site",
       "oni_task": {
         "memory": 3072,
         "cpu": 512
@@ -20,12 +20,12 @@
         "memory": 512
       },
       "express": {
-        "location": "/Users/moises/seafood/oni-express",
+        "location": "../oni-express",
         "memory": 1024,
         "cpu": 1
       },
       "indexer": {
-        "location": "/Users/moises/seafood/oni-indexer",
+        "location": "../oni-indexer",
         "memory": 1024,
         "cpu": 1
       },
