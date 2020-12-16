@@ -152,7 +152,7 @@ and remove ocfl
 rm -rf ocfl
 ```
 
-** Restart Stop ONI**
+**Restart Oni 👹**
 
 ```shell script
 npm run stop:oni
