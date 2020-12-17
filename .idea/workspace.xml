@@ -35,6 +35,9 @@
     <list default="true" id="aa5d3513-e935-4237-b801-e41cb123c104" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cdk.json" beforeDir="false" afterPath="$PROJECT_DIR$/cdk.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cdk_get_output.sh" beforeDir="false" afterPath="$PROJECT_DIR$/cdk_get_output.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,12 +81,32 @@
       <recent name="$PROJECT_DIR$/docker/ssh" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.ssh">
+  <component name="RunManager" selected="npm.get:outputs">
     <configuration name="cdk:deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
         <script value="cdk:deploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="get:all" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="get:all" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="get:outputs" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="get:outputs" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -109,33 +132,13 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="stop:ssh:oni" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="stop:ssh:oni" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="stop:ssh:service" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="stop:ssh:service" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.ssh" />
+        <item itemvalue="npm.get:outputs" />
         <item itemvalue="npm.get:sshdns" />
+        <item itemvalue="npm.get:all" />
+        <item itemvalue="npm.ssh" />
         <item itemvalue="npm.cdk:deploy" />
-        <item itemvalue="npm.stop:ssh:oni" />
-        <item itemvalue="npm.stop:ssh:service" />
       </list>
     </recent_temporary>
   </component>
@@ -153,7 +156,8 @@
       <workItem from="1608073694917" duration="884000" />
       <workItem from="1608079907430" duration="2442000" />
       <workItem from="1608082474161" duration="102000" />
-      <workItem from="1608085871036" duration="77000" />
+      <workItem from="1608085871036" duration="129000" />
+      <workItem from="1608178879426" duration="2444000" />
     </task>
     <servers />
   </component>
@@ -207,30 +211,34 @@
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="1145" height="466" key="DebuggerActiveHint/-1792.-17.1792.1097/0.23.1920.1057@0.23.1920.1057" timestamp="1607985630235" />
-    <state width="1899" height="358" key="GridCell.Tab.0.bottom" timestamp="1607989382467">
+    <state width="1878" height="314" key="GridCell.Tab.0.bottom" timestamp="1608181969383">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="1899" height="358" key="GridCell.Tab.0.bottom/-1792.-17.1792.1097/0.23.1920.1057@0.23.1920.1057" timestamp="1607989382467" />
     <state width="1878" height="358" key="GridCell.Tab.0.bottom/0.23.1792.1097@0.23.1792.1097" timestamp="1607844875376" />
     <state width="1878" height="358" key="GridCell.Tab.0.bottom/0.23.1920.1057/1920.23.1920.1057/-1792.23.1792.1097@0.23.1920.1057" timestamp="1607400686301" />
-    <state width="1899" height="358" key="GridCell.Tab.0.center" timestamp="1607989382467">
+    <state width="1878" height="314" key="GridCell.Tab.0.bottom/1920.23.1920.1057/0.23.1920.1057/-1792.23.1792.1097@0.23.1920.1057" timestamp="1608181969383" />
+    <state width="1878" height="314" key="GridCell.Tab.0.center" timestamp="1608181969382">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="1899" height="358" key="GridCell.Tab.0.center/-1792.-17.1792.1097/0.23.1920.1057@0.23.1920.1057" timestamp="1607989382467" />
     <state width="1878" height="358" key="GridCell.Tab.0.center/0.23.1792.1097@0.23.1792.1097" timestamp="1607844875376" />
     <state width="1878" height="358" key="GridCell.Tab.0.center/0.23.1920.1057/1920.23.1920.1057/-1792.23.1792.1097@0.23.1920.1057" timestamp="1607400686300" />
-    <state width="1899" height="358" key="GridCell.Tab.0.left" timestamp="1607989382466">
+    <state width="1878" height="314" key="GridCell.Tab.0.center/1920.23.1920.1057/0.23.1920.1057/-1792.23.1792.1097@0.23.1920.1057" timestamp="1608181969382" />
+    <state width="1878" height="314" key="GridCell.Tab.0.left" timestamp="1608181969382">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="1899" height="358" key="GridCell.Tab.0.left/-1792.-17.1792.1097/0.23.1920.1057@0.23.1920.1057" timestamp="1607989382466" />
     <state width="1878" height="358" key="GridCell.Tab.0.left/0.23.1792.1097@0.23.1792.1097" timestamp="1607844875376" />
     <state width="1878" height="358" key="GridCell.Tab.0.left/0.23.1920.1057/1920.23.1920.1057/-1792.23.1792.1097@0.23.1920.1057" timestamp="1607400686299" />
-    <state width="1899" height="358" key="GridCell.Tab.0.right" timestamp="1607989382467">
+    <state width="1878" height="314" key="GridCell.Tab.0.left/1920.23.1920.1057/0.23.1920.1057/-1792.23.1792.1097@0.23.1920.1057" timestamp="1608181969382" />
+    <state width="1878" height="314" key="GridCell.Tab.0.right" timestamp="1608181969383">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="1899" height="358" key="GridCell.Tab.0.right/-1792.-17.1792.1097/0.23.1920.1057@0.23.1920.1057" timestamp="1607989382467" />
     <state width="1878" height="358" key="GridCell.Tab.0.right/0.23.1792.1097@0.23.1792.1097" timestamp="1607844875376" />
     <state width="1878" height="358" key="GridCell.Tab.0.right/0.23.1920.1057/1920.23.1920.1057/-1792.23.1792.1097@0.23.1920.1057" timestamp="1607400686300" />
+    <state width="1878" height="314" key="GridCell.Tab.0.right/1920.23.1920.1057/0.23.1920.1057/-1792.23.1792.1097@0.23.1920.1057" timestamp="1608181969383" />
     <state width="1899" height="358" key="GridCell.Tab.1.bottom" timestamp="1607989382469">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>

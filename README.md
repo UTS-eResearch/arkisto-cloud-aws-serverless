@@ -4,9 +4,13 @@ This repository will help you deploy an arkisto site using AWS Elastic Container
 
 ## To get started
 
-Install aws
+*aws cli*
 
 https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
+
+*rsync* (Version 3, Your mac may not have the latest version)
+
+Upgrade so you can sync config files and repository 
 
 #### Run AWS Configure to set up
 Run:
@@ -63,7 +67,7 @@ ssh-keygen -f key/id.rsa -t rsa -C "arkisto" -q -N ""
 chmod 644 key/id.rsa
 ```
 
-#### Run
+#### First Run
 
 Install:
 ```shell script
@@ -79,6 +83,21 @@ Then deploy
 ```shell script
 npm run cdk:deploy
 ```
+
+Stop Oni
+
+```shell script
+npm run stop:oni
+```
+This will allow AWS cli to finish.
+
+You will see AWS outputs that the program and you will use
+
+```shell script
+npm run get:outputs
+```
+
+The output that starts with `oniserviceServiceURL` is your Oni website
 
 ### Upload Config and Data
 

@@ -8,10 +8,10 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "node_modules/.bin/cdk synth",
+    "cdk:list": "node_modules/.bin/cdk list",
+    "cdk:diff": "./node_modules/.bin/cdk diff",
     "cdk:deploy": "node_modules/.bin/cdk deploy --require-approval any-change",
     "cdk:destroy": "node_modules/.bin/cdk destroy --require-approval any-change",
-    "cdk:diff": "./node_modules/.bin/cdk diff",
     "start:ssh": "./cdk_service.sh start service sshservice",
     "stop:ssh": "./cdk_service.sh stop service sshservice",
     "start:oni": "./cdk_service.sh start service oniservice",
@@ -19,7 +19,8 @@
     "sync:config": "./cdk_sync_config.sh",
     "sync:ocfl": "./cdk_sync_ocfl.sh.sh",
     "ssh": "./cdk_ssh.sh",
-    "get:sshdns": "./cdk_get_output.sh sshLoadBalancer"
+    "get:sshdns": "./cdk_get_output.sh sshLoadBalancer",
+    "get:outputs": "./cdk_get_output.sh all"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.78.0",
