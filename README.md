@@ -106,7 +106,7 @@ You could also see `host.docker.internal` instead of `localhost`
 
 - Remove `isBot` from the configuration
 
-- It will block AWS health check and never come up
+    It will block AWS health check and the site will never come up
 
 **Sync Configuration**
 
