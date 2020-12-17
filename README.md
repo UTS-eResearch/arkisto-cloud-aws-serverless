@@ -116,6 +116,8 @@ Example:
 This is because if you used docker-compose for Mac. Mac OS cannot use localhost it uses the docker name.
 You could also see `host.docker.internal` instead of `localhost`
 
+- Remove `isBot` from the configuration, it will block AWS health check and never come up
+
 **Sync Configuration**
 
 ```shell script
