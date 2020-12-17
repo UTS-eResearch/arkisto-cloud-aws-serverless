@@ -1,18 +1,20 @@
-# Arkisto to Cloud Serverless
+# Arkisto to AWS Serverless
 
 This repository will help you deploy an arkisto site using AWS Elastic Container Service using Fargate Containers with cloudformation
 
 ## To get started
 
-*aws cli*
+Install:
+- **aws cli**
 
-https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
+    https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
 
-*rsync* (Version 3, Your mac may not have the latest version)
+- **rsync** (Version 3, Your mac may not have the latest version)
 
-Upgrade so you can sync config files and repository 
+    Upgrade so you can sync config files and repository 
 
 #### Run AWS Configure to set up
+
 Run:
 ```shell script
 aws configure
@@ -27,22 +29,6 @@ Default output format [None]: json
 ```
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-## Useful commands
-
- * `npm run build`               compile typescript to js
- * `npm run watch`               watch for changes and compile
- * `npm run cdk:deploy`          deploy this stack 
- * `npm run cdk:destroy`         destroy this stack 
- * `npm run cdk:diff`            compare deployed stack with current state
- * `npm run cdk`                 emits the synthesized CloudFormation template
- * `npm run start:ssh`           start ssh service
- * `npm run stop:ssh`            stop ssh service
- * `npm run start:oni`           start oni service
- * `npm run stop:oni`            stop oni service
- * `npm run sync:config`         sync contents of config to site
- * `npm run sync:ocfl`           sync ocfl repository to site
- * `npm run ssh`                 connects via ssh
 
 ## Configuration
 
@@ -103,35 +89,43 @@ The output that starts with `oniserviceServiceURL` is your Oni website
 
 **Docker**
 
-Verify that your docker container config are pointing to localhost. 
+The configuration from docker-compose to docker and aws varies.
+
+- Verify that your docker container config are pointing to localhost. 
 This way all the docker containers can talk to each other.
 
-Example: 
-- In express.json 
+    In express.json 
     - `http://solr:8983` use `http://localhost:8983`
     - `memcached:11211` use `localhost:11211`
-- In indexer.json
+    
+    In indexer.json
     - `"solrBase": "http://solr:8983/solr/ocfl",` use `"solrBase": "http://localhost:8983/solr/ocfl",`
 
-This is because if you used docker-compose for Mac. Mac OS cannot use localhost it uses the docker name.
+    This is because if you used docker-compose for Mac. Mac OS cannot use localhost it uses the docker name.
 You could also see `host.docker.internal` instead of `localhost`
 
-- Remove `isBot` from the configuration, it will block AWS health check and never come up
+- Remove `isBot` from the configuration
+
+- It will block AWS health check and never come up
 
 **Sync Configuration**
 
 ```shell script
 npm run sync:config
 ```
-**OCFL**
 
-Sync OCFL
+**Sync OCFL**
 
 ```shell script
 npm run sync:ocfl
 ```
+Then Start Oni 
 
-#### Verify or See files
+```shell script
+npm run start:oni
+```
+
+## Troubleshooting
 
 **Connect SSH**
 
@@ -153,8 +147,6 @@ Folders will be stored in
 ```shell script
 /etc/share/ocfl
 ```
-
-## Troubleshooting
 
 **Delete Solr data dir**
 
@@ -186,3 +178,22 @@ then start oni again
 ```shell script
 npm run start:oni
 ```
+
+## Useful commands
+
+ * `npm run build`               compile typescript to js
+ * `npm run watch`               watch for changes and compile
+ * `npm run cdk:deploy`          deploy this stack 
+ * `npm run cdk:destroy`         destroy this stack 
+ * `npm run cdk:diff`            compare deployed stack with current state
+ * `npm run cdk`                 emits the synthesized CloudFormation template
+ * `npm run start:ssh`           start ssh service
+ * `npm run stop:ssh`            stop ssh service
+ * `npm run start:oni`           start oni service
+ * `npm run stop:oni`            stop oni service
+ * `npm run sync:config`         sync contents of config to site
+ * `npm run sync:ocfl`           sync ocfl repository to site
+ * `npm run ssh`                 connects via ssh
+ * `npm run get:sshdns`          prints ssh url
+ * `npm run get:outputs`         prints all cdk outputs (loadbalancers, efs drives)
+

@@ -8,6 +8,6 @@ if [ $1 == 'all' ]; then
   node -pe "JSON.parse(process.argv[1]).Stacks[0].Outputs" "${CLOUD_FORMATION}"
 else
   OUTPUTKEY=$1
-node -pe "JSON.parse(process.argv[1]).Stacks[0].Outputs.find(x => x['OutputKey'] === '${OUTPUTKEY}')['OutputValue']" "${CLOUD_FORMATION}"
+  node -pe "JSON.parse(process.argv[1]).Stacks[0].Outputs.find(x => x['OutputKey'] === '${OUTPUTKEY}')['OutputValue']" "${CLOUD_FORMATION}"
 fi
 

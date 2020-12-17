@@ -8,6 +8,7 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
+    "cdk": "node_modules/.bin/cdk",
     "cdk:list": "node_modules/.bin/cdk list",
     "cdk:diff": "./node_modules/.bin/cdk diff",
     "cdk:deploy": "node_modules/.bin/cdk deploy --require-approval any-change",
