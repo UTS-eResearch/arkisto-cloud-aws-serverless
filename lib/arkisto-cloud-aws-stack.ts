@@ -6,7 +6,6 @@ import * as logs from "@aws-cdk/aws-logs";
 import * as ecs_patterns from "@aws-cdk/aws-ecs-patterns";
 import * as elb2 from "@aws-cdk/aws-elasticloadbalancingv2";
 
-import Base from "./base";
 import DataIngest from "./dataingest";
 import Oni from "./oni";
 
