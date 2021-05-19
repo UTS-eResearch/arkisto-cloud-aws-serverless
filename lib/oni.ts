@@ -23,6 +23,7 @@ export default class Oni extends ecs.FargateTaskDefinition {
       image: ecs.ContainerImage.fromAsset(expressAssetLocation),
       memoryLimitMiB: base.express.memory, // Default is 512
       essential: true,
+      command: ['npm', 'start', '/etc/share/config/express.json'],
       environment: {
         NODE_ENV: 'development'
       },
