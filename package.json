@@ -18,7 +18,7 @@
     "start:oni": "./cdk_service.sh start service oniservice",
     "stop:oni": "./cdk_service.sh stop service oniservice",
     "sync:config": "./cdk_sync_config.sh",
-    "sync:ocfl": "./cdk_sync_ocfl.sh.sh",
+    "sync:ocfl": "./cdk_sync_ocfl.sh",
     "ssh": "./cdk_ssh.sh",
     "get:sshdns": "./cdk_get_output.sh sshLoadBalancer",
     "get:outputs": "./cdk_get_output.sh all"

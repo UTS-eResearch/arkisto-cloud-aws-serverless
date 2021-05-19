@@ -1,16 +1,16 @@
 {
   "app": "npx ts-node bin/arkisto-cloud-aws.ts",
   "context": {
-    "cloud_stack_id": "<<YOUR_STACK_ID_HERE>>",
+    "cloud_stack_id": "ExpertNationOniV121",
     "availability_zones": [
       "ap-southeast-2a",
       "ap-southeast-2b",
       "ap-southeast-2c"
     ],
     "base": {
-      "ocfl": "/Users/moises/seafood/oni-express/ocfl",
-      "config": "/Users/moises/seafood/oni-express/config",
-      "description": "<<YOUR_STACK_ID_HERE>> ONI site",
+      "ocfl": "/Users/moises/source/github/uts-eresearch/heurist2ro-crate/en_ocfl",
+      "config": "/Users/moises/source/github/uts-eresearch/heurist2ro-crate/en_oni_aws/config",
+      "description": "ExpertNation ONI site",
       "oni_task": {
         "memory": 3072,
         "cpu": 512
@@ -20,12 +20,7 @@
         "memory": 512
       },
       "express": {
-        "location": "../oni-express",
-        "memory": 1024,
-        "cpu": 1
-      },
-      "indexer": {
-        "location": "../oni-indexer",
+        "location": "/Users/moises/source/github/uts-eresearch/oni-express",
         "memory": 1024,
         "cpu": 1
       },

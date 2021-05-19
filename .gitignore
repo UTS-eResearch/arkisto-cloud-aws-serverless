@@ -16,3 +16,4 @@ cdk.out
 key/*
 
 helpers/*.json
+cdk_ssh_installed.txt
