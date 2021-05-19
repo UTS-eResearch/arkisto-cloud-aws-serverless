@@ -197,3 +197,7 @@ npm run start:oni
  * `npm run get:sshdns`          prints ssh url
  * `npm run get:outputs`         prints all cdk outputs (loadbalancers, efs drives)
 
+### Using indexer with oni-express (without oni-indexer)
+
+Create a dump directory in config/dump and upload it to the dataingest container in ECS
+
