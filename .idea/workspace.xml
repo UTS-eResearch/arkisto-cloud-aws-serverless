@@ -34,7 +34,10 @@
   <component name="ChangeListManager">
     <list default="true" id="aa5d3513-e935-4237-b801-e41cb123c104" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/oni.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/oni.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cdk.json" beforeDir="false" afterPath="$PROJECT_DIR$/cdk.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/arkisto-cloud-aws-stack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/arkisto-cloud-aws-stack.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +66,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -78,17 +83,7 @@
       <recent name="$PROJECT_DIR$/docker/ssh" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
-    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="build" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="npm.start:oni">
     <configuration name="ssh" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -129,12 +124,22 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="sync:ocfl" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="sync:ocfl" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
-        <item itemvalue="npm.ssh" />
         <item itemvalue="npm.start:oni" />
+        <item itemvalue="npm.ssh" />
         <item itemvalue="npm.sync:config" />
+        <item itemvalue="npm.sync:ocfl" />
         <item itemvalue="npm.stop:oni" />
       </list>
     </recent_temporary>
@@ -160,7 +165,7 @@
       <workItem from="1616288775618" duration="1391000" />
       <workItem from="1616370093502" duration="6000" />
       <workItem from="1616372624487" duration="256000" />
-      <workItem from="1621293463792" duration="21110000" />
+      <workItem from="1621293463792" duration="40643000" />
     </task>
     <servers />
   </component>
@@ -198,5 +203,9 @@
       <path value="$PROJECT_DIR$/cdk.out/asset.23c57d4888bde0e752f78f6a5cd4e07edae52c989fd45a91b61e2db05294a469" />
       <path value="$PROJECT_DIR$/cdk.out/asset.23c57d4888bde0e752f78f6a5cd4e07edae52c989fd45a91b61e2db05294a469/oni-portal" />
     </ignored-roots>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

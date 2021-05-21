@@ -5,6 +5,7 @@ import * as ecs from "@aws-cdk/aws-ecs";
 import * as logs from "@aws-cdk/aws-logs";
 import * as ecs_patterns from "@aws-cdk/aws-ecs-patterns";
 import * as elb2 from "@aws-cdk/aws-elasticloadbalancingv2";
+import * as cm from "@aws-cdk/aws-certificatemanager";
 
 import DataIngest from "./dataingest";
 import Oni from "./oni";
@@ -142,6 +143,7 @@ export class ArkistoCloudAwsStack extends cdk.Stack {
       configVolumeConfig,
       solrVolumeConfig
     });
+
     const oniApp = new ecs_patterns.ApplicationLoadBalancedFargateService(this, "oni-service", {
       cluster: cluster, // Required
       cpu: base["oni_service"]["cpu"], // Default is 256
@@ -152,6 +154,26 @@ export class ArkistoCloudAwsStack extends cdk.Stack {
       platformVersion: ecs.FargatePlatformVersion.VERSION1_4
     });
 
+    if (base.certificate_arn) {
+      var certArn = base.certificate_arn;
+      const cert = cm.Certificate.fromCertificateArn(this, 'certificate-arn', certArn);
+
+      const sslListener = oniApp.loadBalancer.addListener('ssl-listener', {
+        port: 443,
+        certificates: [cert],
+        protocol: elb2.ApplicationProtocol.HTTPS
+      });
+
+      sslListener.addTargets('oni-target', {
+        targets: [oniApp.service],
+        port: 8080,
+        protocol: elb2.ApplicationProtocol.HTTP,
+        healthCheck: {
+          path: '/config/status',
+          interval: cdk.Duration.minutes(1)
+        }
+      });
+    }
     oniApp.targetGroup.configureHealthCheck({
       path: "/",
       healthyHttpCodes: "200-399",

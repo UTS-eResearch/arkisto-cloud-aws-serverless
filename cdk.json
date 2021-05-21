@@ -1,15 +1,16 @@
 {
   "app": "npx ts-node bin/arkisto-cloud-aws.ts",
   "context": {
-    "cloud_stack_id": "ExpertNationOniV121",
+    "cloud_stack_id": "<< your cloud stack id >>",
     "availability_zones": [
       "ap-southeast-2a",
       "ap-southeast-2b",
       "ap-southeast-2c"
     ],
     "base": {
-      "ocfl": "/Users/moises/source/github/uts-eresearch/heurist2ro-crate/en_ocfl",
-      "config": "/Users/moises/source/github/uts-eresearch/heurist2ro-crate/en_oni_aws/config",
+      "certificate_arn_notyet": "arn:aws:acm:ap-southeast-2:ACCOUNT:certificate/ID",
+      "ocfl": "<<base location of the ocfl repository >>",
+      "config": "<< base location of the configuration folder >>",
       "description": "ExpertNation ONI site",
       "oni_task": {
         "memory": 3072,
@@ -20,7 +21,7 @@
         "memory": 512
       },
       "express": {
-        "location": "/Users/moises/source/github/uts-eresearch/oni-express",
+        "location": "<< location of oni-express repository >>",
         "memory": 1024,
         "cpu": 1
       },
