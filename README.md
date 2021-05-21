@@ -28,7 +28,8 @@ Default region name [None]: ap-southeast-2
 Default output format [None]: json
 ```
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+The `cdk.json` file tells the CDK Toolkit how to execute your app. The best way to work on this is to fork
+this project and update the cdk.json
 
 ## Configuration
 
