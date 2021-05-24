@@ -33,7 +33,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa5d3513-e935-4237-b801-e41cb123c104" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cdk.json" beforeDir="false" afterPath="$PROJECT_DIR$/cdk.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/arkisto-cloud-aws-stack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/arkisto-cloud-aws-stack.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +81,7 @@
       <recent name="$PROJECT_DIR$/docker/ssh" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start:oni">
+  <component name="RunManager" selected="npm.sync:config">
     <configuration name="ssh" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -95,16 +97,6 @@
       <command value="run" />
       <scripts>
         <script value="start:oni" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="stop:oni" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="stop:oni" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -130,13 +122,23 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="watch" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="watch" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start:oni" />
-        <item itemvalue="npm.ssh" />
         <item itemvalue="npm.sync:config" />
+        <item itemvalue="npm.watch" />
+        <item itemvalue="npm.ssh" />
         <item itemvalue="npm.sync:ocfl" />
-        <item itemvalue="npm.stop:oni" />
+        <item itemvalue="npm.start:oni" />
       </list>
     </recent_temporary>
   </component>
@@ -161,7 +163,7 @@
       <workItem from="1616288775618" duration="1391000" />
       <workItem from="1616370093502" duration="6000" />
       <workItem from="1616372624487" duration="256000" />
-      <workItem from="1621293463792" duration="40807000" />
+      <workItem from="1621293463792" duration="47650000" />
     </task>
     <servers />
   </component>

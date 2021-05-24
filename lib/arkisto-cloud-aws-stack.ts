@@ -155,23 +155,32 @@ export class ArkistoCloudAwsStack extends cdk.Stack {
     });
 
     if (base.certificate_arn) {
-      var certArn = base.certificate_arn;
-      const cert = cm.Certificate.fromCertificateArn(this, 'certificate-arn', certArn);
-
+      let certArn = base.certificate_arn;
+      let cert = cm.Certificate.fromCertificateArn(this, 'certificate-arn', certArn);
       const sslListener = oniApp.loadBalancer.addListener('ssl-listener', {
         port: 443,
         certificates: [cert],
         protocol: elb2.ApplicationProtocol.HTTPS
       });
-
       sslListener.addTargets('oni-target', {
         targets: [oniApp.service],
         port: 8080,
         protocol: elb2.ApplicationProtocol.HTTP,
         healthCheck: {
-          path: '/config/status',
-          interval: cdk.Duration.minutes(1)
+          path: '/',
+          interval: cdk.Duration.minutes(1),
+          healthyHttpCodes: "200-399",
+          timeout: cdk.Duration.seconds(30),
+          unhealthyThresholdCount: 5
         }
+      });
+      //Beware: If you add a redirect, you must be sure that
+      // the certificates are correct otherwise the original DNS
+      // will say that the connection is not secure
+      oniApp.listener.addRedirectResponse('HttpRedirect', {
+        statusCode: 'HTTP_301',
+        protocol: elb2.ApplicationProtocol.HTTPS,
+        port: '443'
       });
     }
     oniApp.targetGroup.configureHealthCheck({
