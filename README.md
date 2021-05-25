@@ -92,15 +92,15 @@ The output that starts with `oniserviceServiceURL` is your Oni website
 
 The configuration from docker-compose to docker and aws varies.
 
-- Verify that your docker container config are pointing to localhost. 
+- Verify that your docker container config are pointing to 127.0.0.1 (previously localhost. 
 This way all the docker containers can talk to each other.
 
     In express.json 
-    - `http://solr:8983` use `http://localhost:8983`
-    - `memcached:11211` use `localhost:11211`
+    - `http://solr:8983` use `http://127.0.0.1:8983`
+    - `memcached:11211` use `127.0.0.1:11211`
     
     In indexer.json
-    - `"solrBase": "http://solr:8983/solr/ocfl",` use `"solrBase": "http://localhost:8983/solr/ocfl",`
+    - `"solrBase": "http://solr:8983/solr/ocfl",` use `"solrBase": "http://127.0.0.1:8983/solr/ocfl",`
 
     This is because if you used docker-compose for Mac. Mac OS cannot use localhost it uses the docker name.
 You could also see `host.docker.internal` instead of `localhost`
@@ -200,5 +200,5 @@ npm run start:oni
 
 ### Using indexer with oni-express (without oni-indexer)
 
-Create a dump directory in config/dump and upload it to the dataingest container in ECS
+Create a "dump directory" in your config folder (e.g. "config/dump" and use "npm run sync:config" to upload it to the dataingest container in ECS
 
