@@ -172,7 +172,12 @@ rm -rf ocfl
 npm run stop:oni
 ```
 
-It should give a desired task of 0 then AWS will take care of the rest
+It should give a desired task of 0 then AWS will take care of the rest. 
+(Note: this can take some time, you can check, or manually stop, the containers via AWS Console: 
+- Go to "Elastic Container Service" in the console, then "Clusters" and select your named cluster
+- Select the service with "oniservice" in the name, and go to the "Configuration and Tasks" tab
+- Select the most recent task, and you should see the current status of the containers (and a "Stop" button in the top-right)
+- Confirm that all containers have the status "Stopped" before moving on)
 
 then start oni again
 
