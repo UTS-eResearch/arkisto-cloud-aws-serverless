@@ -109,6 +109,11 @@ You could also see `host.docker.internal` instead of `localhost`
 
     It will block AWS health check and the site will never come up
 
+### Using indexer with oni-express (without oni-indexer)
+
+Create a dump directory in config/dump and upload it to the dataingest container in ECS
+
+
 **Sync Configuration**
 
 ```shell script
@@ -127,6 +132,22 @@ npm run start:oni
 ```
 
 ## Troubleshooting
+
+**Logging**
+
+This cdk creates [Amazon CloudWatch](https://console.aws.amazon.com/cloudwatch) > Log Groups.
+
+The logs are installed in log groups named:
+
+```ignorelang
+<<stack-id>>-dataingesttaskdefinitionsshLogGroup<<ID>> 
+<<stack-id>>-oniTaskmemcachedLogGroup<<ID>> 
+<<stack-id>>-oniTaskoniexpressLogGroup<<ID>> 
+<<stack-id>>-oniTasksolrLogGroup<<ID>> 
+```
+You can inspect the logs via the aws console or with aws cli commands
+
+With aws-cli you could "tail -f" your logs using a command line tool check https://github.com/jorgebastida/awslogs 
 
 **Connect SSH**
 
@@ -197,8 +218,4 @@ npm run start:oni
  * `npm run ssh`                 connects via ssh
  * `npm run get:sshdns`          prints ssh url
  * `npm run get:outputs`         prints all cdk outputs (loadbalancers, efs drives)
-
-### Using indexer with oni-express (without oni-indexer)
-
-Create a dump directory in config/dump and upload it to the dataingest container in ECS
 

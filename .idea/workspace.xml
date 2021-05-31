@@ -34,8 +34,7 @@
   <component name="ChangeListManager">
     <list default="true" id="aa5d3513-e935-4237-b801-e41cb123c104" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cdk.json" beforeDir="false" afterPath="$PROJECT_DIR$/cdk.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/arkisto-cloud-aws-stack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/arkisto-cloud-aws-stack.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +162,9 @@
       <workItem from="1616288775618" duration="1391000" />
       <workItem from="1616370093502" duration="6000" />
       <workItem from="1616372624487" duration="256000" />
-      <workItem from="1621293463792" duration="47650000" />
+      <workItem from="1621293463792" duration="48101000" />
+      <workItem from="1621832870586" duration="774000" />
+      <workItem from="1622442581428" duration="578000" />
     </task>
     <servers />
   </component>
